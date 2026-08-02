@@ -12,10 +12,11 @@
   <meta property="og:url" content="https://zaikalabel.com/">
   <meta property="og:image" content="https://zaikalabel.com/assets/og.jpg">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23171310'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-size='40' fill='%23f5f2ec' text-anchor='middle'%3EZ%3C/text%3E%3C/svg%3E">
+  <meta name="theme-color" content="#f4f1ea">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%231b1713'/%3E%3Ctext x='32' y='46' font-family='Georgia,serif' font-style='italic' font-size='42' fill='%23f4f1ea' text-anchor='middle'%3EZ%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,440..640;1,9..144,440..640&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..650;1,9..144,400..650&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -28,70 +29,99 @@
   </script>
   <style>
     :root {
-      --paper: #f5f2ec; --ink: #171310; --muted: #756e64; --line: #dcd6ca; --paper-2: #efeae1;
-      --serif: "Fraunces", Georgia, serif; --sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+      --paper: #f4f1ea; --paper-deep: #eae5da; --ink: #1b1713; --muted: #675f53;
+      --line: #d8d1c2; --moss: #47502f; --moss-soft: #5c6540;
+      --serif: "Fraunces", Georgia, serif; --sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
-    body { background: var(--paper); color: var(--ink); font-family: var(--sans); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    body { background: var(--paper); color: var(--ink); font-family: var(--sans); font-size: 16px; line-height: 1.65; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    body::after { content: ""; position: fixed; inset: 0; z-index: 999; pointer-events: none; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E"); opacity: 0.045; transform: translateZ(0); }
+    ::selection { background: var(--moss); color: var(--paper); }
     a { color: inherit; }
     img { display: block; max-width: 100%; height: auto; }
-    .wrap { max-width: 1280px; margin: 0 auto; padding: 0 clamp(1.1rem, 4vw, 2.5rem); }
+    :focus-visible { outline: 2px solid var(--moss); outline-offset: 3px; }
+    .wrap { max-width: 1320px; margin: 0 auto; padding: 0 clamp(1.1rem, 4vw, 2.75rem); }
 
-    /* top bar */
-    .bar { position: sticky; top: 0; z-index: 10; background: color-mix(in srgb, var(--paper) 88%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
-    .bar-in { display: flex; align-items: center; justify-content: space-between; height: 3.6rem; }
-    .mark { font-family: var(--sans); font-weight: 600; letter-spacing: 0.42em; text-indent: 0.42em; font-size: 0.95rem; text-decoration: none; }
-    .bar nav { display: flex; gap: 1.6rem; }
-    .bar nav a { font-size: 0.82rem; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; color: var(--muted); transition: color .15s; }
+    /* ---- top bar ---- */
+    .bar { position: sticky; top: 0; z-index: 20; background: color-mix(in srgb, var(--paper) 90%, transparent); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+    .bar-in { display: flex; align-items: center; justify-content: space-between; height: 3.9rem; }
+    .mark { font-family: var(--serif); font-weight: 600; font-size: 1.25rem; letter-spacing: 0.22em; text-indent: 0.22em; text-decoration: none; }
+    .mark .no { font-style: italic; color: var(--moss); }
+    .bar nav { display: flex; gap: 0.4rem; }
+    .bar nav a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 0.9rem; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none; color: var(--muted); transition: color .18s var(--ease); }
     .bar nav a:hover { color: var(--ink); }
+    .bar nav a.pill { border: 1px solid var(--ink); color: var(--ink); }
+    .bar nav a.pill:hover { background: var(--ink); color: var(--paper); }
 
-    /* hero */
-    .hero { padding: clamp(3rem, 7vw, 6rem) 0 clamp(3rem, 6vw, 5rem); }
-    .hero-in { display: grid; grid-template-columns: 7fr 5fr; gap: clamp(2rem, 5vw, 4.5rem); align-items: center; }
-    .kicker { font-size: 0.78rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.4rem; }
-    h1 { font-family: var(--serif); font-weight: 560; font-size: clamp(2.5rem, 5.4vw, 4.6rem); line-height: 1.04; letter-spacing: -0.015em; text-wrap: balance; }
-    h1 em { font-style: italic; font-weight: 480; }
-    .lede { margin-top: 1.6rem; font-size: clamp(1.02rem, 1.5vw, 1.18rem); color: var(--muted); max-width: 34em; }
-    .lede strong { color: var(--ink); font-weight: 500; }
-    .cta-row { margin-top: 2.2rem; display: flex; gap: 0.9rem; flex-wrap: wrap; }
-    .btn { display: inline-block; padding: 0.95rem 1.9rem; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; text-decoration: none; border: 1px solid var(--ink); transition: all .18s ease; }
+    /* ---- hero ---- */
+    .hero { position: relative; padding: clamp(3.2rem, 7vw, 6.5rem) 0 clamp(3rem, 6vw, 5.5rem); }
+    .hero-in { display: grid; grid-template-columns: 7fr 5fr; gap: clamp(2rem, 5vw, 5rem); align-items: center; }
+    .kicker { display: flex; align-items: center; gap: 0.8rem; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; color: var(--moss); margin-bottom: clamp(1.2rem, 2.5vw, 2rem); }
+    .kicker::before { content: ""; width: 2.4rem; height: 1px; background: var(--moss); }
+    h1 { font-family: var(--serif); font-weight: 560; font-size: clamp(2.7rem, 6.2vw, 5.4rem); line-height: 1.02; letter-spacing: -0.02em; text-wrap: balance; }
+    h1 .line { display: block; }
+    h1 em { font-style: italic; font-weight: 460; color: var(--moss); }
+    .lede { margin-top: 1.7rem; font-size: clamp(1.02rem, 1.5vw, 1.16rem); color: var(--muted); max-width: 33em; }
+    .lede strong { color: var(--ink); font-weight: 600; }
+    .cta-row { margin-top: 2.4rem; display: flex; gap: 0.9rem; flex-wrap: wrap; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0.85rem 2rem; font-family: var(--sans); font-size: 0.85rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; text-decoration: none; border: 1px solid var(--ink); border-radius: 999px; transition: background .18s var(--ease), color .18s var(--ease), transform .18s var(--ease); }
+    .btn:active { transform: scale(0.98); }
     .btn-solid { background: var(--ink); color: var(--paper); }
     .btn-solid:hover { background: transparent; color: var(--ink); }
     .btn-line:hover { background: var(--ink); color: var(--paper); }
-    .hero-img img { border-radius: 3px; }
+    .hero-fig { position: relative; }
+    .hero-fig img { border-radius: 4px; position: relative; z-index: 1; }
+    .hero-fig::before { content: ""; position: absolute; inset: 0; border: 1px solid var(--line); border-radius: 4px; transform: translate(14px, 14px); }
+    .hero-fig figcaption { margin-top: 0.9rem; font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); display: flex; justify-content: space-between; }
+    .hero-zaika { position: absolute; right: -0.5rem; top: 50%; transform: translateY(-50%) rotate(90deg); transform-origin: center; font-family: var(--serif); font-style: italic; font-size: 0.85rem; letter-spacing: 0.5em; color: var(--muted); opacity: 0.6; display: none; }
 
-    /* fact strip */
-    .facts { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: var(--paper-2); }
-    .facts-in { display: grid; grid-template-columns: repeat(3, 1fr); }
-    .fact { padding: clamp(1.6rem, 3vw, 2.4rem) clamp(1rem, 2.5vw, 2rem); }
-    .fact + .fact { border-left: 1px solid var(--line); }
-    .fact h3 { font-family: var(--serif); font-style: italic; font-weight: 500; font-size: clamp(1.15rem, 1.8vw, 1.45rem); margin-bottom: 0.5rem; }
-    .fact p { font-size: 0.93rem; color: var(--muted); max-width: 26em; }
+    /* ---- marquee ---- */
+    .marq { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); overflow: hidden; background: var(--paper-deep); }
+    .marq-track { display: flex; width: max-content; animation: marq 48s linear infinite; }
+    .marq span { flex: none; font-family: var(--serif); font-style: italic; font-weight: 460; font-size: clamp(1rem, 1.6vw, 1.25rem); padding: 0.85rem 0; white-space: pre; color: var(--ink); }
+    @keyframes marq { to { transform: translateX(-50%); } }
 
-    /* gallery */
+    /* ---- facts ---- */
+    .facts { padding: clamp(3rem, 6vw, 5rem) 0 0; }
+    .facts-in { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(1.4rem, 3vw, 3rem); }
+    .fact { border-top: 1px solid var(--ink); padding-top: 1.2rem; }
+    .fact .no { font-family: var(--serif); font-style: italic; font-size: 0.95rem; color: var(--moss); letter-spacing: 0.1em; }
+    .fact h3 { font-family: var(--serif); font-weight: 600; font-size: clamp(1.25rem, 2vw, 1.6rem); margin: 0.4rem 0 0.5rem; }
+    .fact p { font-size: 0.95rem; color: var(--muted); max-width: 28em; }
+
+    /* ---- gallery ---- */
     .gallery { padding: clamp(3rem, 6vw, 5rem) 0 1rem; }
-    .sec-head { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; margin-bottom: clamp(1.6rem, 3vw, 2.4rem); }
-    h2 { font-family: var(--serif); font-weight: 560; font-size: clamp(1.7rem, 3vw, 2.4rem); letter-spacing: -0.01em; }
-    .sec-head span { font-size: 0.82rem; color: var(--muted); letter-spacing: 0.08em; }
-    .grid { columns: 3 340px; column-gap: 16px; }
-    .grid figure { break-inside: avoid; margin: 0 0 16px; overflow: hidden; border-radius: 3px; background: var(--paper-2); }
-    .grid img { width: 100%; transition: transform .5s ease; }
-    .grid figure:hover img { transform: scale(1.022); }
+    .sec-head { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; margin-bottom: clamp(1.6rem, 3vw, 2.6rem); }
+    h2 { font-family: var(--serif); font-weight: 600; font-size: clamp(1.9rem, 3.4vw, 2.8rem); letter-spacing: -0.015em; }
+    h2 .no { font-style: italic; font-weight: 460; color: var(--moss); font-size: 0.6em; vertical-align: 0.35em; margin-right: 0.35em; }
+    .sec-head span { font-size: 0.8rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); }
+    .bento { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 250px; grid-auto-flow: dense; gap: 14px; }
+    .tile { overflow: hidden; border-radius: 4px; background: var(--paper-deep); }
+    .tile img { width: 100%; height: 100%; object-fit: cover; transition: transform .7s var(--ease); }
+    .tile:hover img { transform: scale(1.035); }
+    .t-tall { grid-row: span 2; }
+    .t-wide { grid-column: span 2; }
 
-    /* story */
-    .story { padding: clamp(3.5rem, 7vw, 6.5rem) 0; }
-    .story-in { display: grid; grid-template-columns: 5fr 7fr; gap: clamp(2rem, 5vw, 4.5rem); align-items: center; }
-    .story-img img { border-radius: 3px; }
-    .story h2 { margin-bottom: 1.4rem; }
+    /* ---- story ---- */
+    .story { padding: clamp(4rem, 8vw, 7rem) 0; }
+    .story-in { display: grid; grid-template-columns: 5fr 7fr; gap: clamp(2rem, 5vw, 5rem); align-items: center; }
+    .story-fig { position: relative; }
+    .story-fig img { border-radius: 4px; position: relative; z-index: 1; }
+    .story-fig::before { content: ""; position: absolute; inset: 0; border: 1px solid var(--line); border-radius: 4px; transform: translate(-14px, 14px); }
+    .story h2 { margin-bottom: 1.5rem; }
     .story p { color: var(--muted); max-width: 36em; margin-bottom: 1.05em; }
-    .story p strong { color: var(--ink); font-weight: 500; }
-    .story .pull { font-family: var(--serif); font-style: italic; font-weight: 480; font-size: clamp(1.15rem, 1.9vw, 1.45rem); color: var(--ink); line-height: 1.4; margin-top: 1.6rem; }
+    .story p strong { color: var(--ink); font-weight: 600; }
+    .pull { font-family: var(--serif); font-style: italic; font-weight: 480; font-size: clamp(1.25rem, 2.2vw, 1.7rem); color: var(--ink); line-height: 1.35; margin-top: 1.8rem; padding-left: 1.4rem; border-left: 2px solid var(--moss); }
 
-    /* cta band */
-    .band { background: var(--ink); color: var(--paper); text-align: center; padding: clamp(4rem, 8vw, 6.5rem) 0; }
-    .band h2 { font-size: clamp(1.9rem, 3.6vw, 3rem); max-width: 18em; margin: 0 auto; text-wrap: balance; }
-    .band p { color: color-mix(in srgb, var(--paper) 65%, var(--ink)); margin: 1.1rem auto 0; max-width: 34em; }
+    /* ---- cta band ---- */
+    .band { position: relative; background: var(--ink); color: var(--paper); text-align: center; padding: clamp(4.5rem, 9vw, 7.5rem) 0; overflow: hidden; }
+    .band::before { content: "ZAIKA"; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); font-family: var(--serif); font-style: italic; font-weight: 600; font-size: clamp(7rem, 18vw, 15rem); letter-spacing: 0.04em; color: rgba(244, 241, 234, 0.05); pointer-events: none; }
+    .band > .wrap { position: relative; }
+    .band h2 { font-size: clamp(2rem, 4vw, 3.4rem); max-width: 16em; margin: 0 auto; text-wrap: balance; }
+    .band h2 em { font-style: italic; font-weight: 460; }
+    .band p { color: rgba(244, 241, 234, 0.62); margin: 1.2rem auto 0; max-width: 32em; }
     .band .cta-row { justify-content: center; }
     .band .btn { border-color: var(--paper); }
     .band .btn-solid { background: var(--paper); color: var(--ink); }
@@ -99,37 +129,48 @@
     .band .btn-line { color: var(--paper); }
     .band .btn-line:hover { background: var(--paper); color: var(--ink); }
 
-    footer { padding: 2.6rem 0 3rem; }
-    .foot { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; color: var(--muted); font-size: 0.85rem; }
-    .foot nav { display: flex; gap: 1.4rem; }
-    .foot a { text-decoration: none; border-bottom: 1px solid var(--line); padding-bottom: 1px; }
-    .foot a:hover { color: var(--ink); border-color: var(--ink); }
+    footer { padding: 2.8rem 0 3.2rem; }
+    .foot { display: flex; align-items: center; justify-content: space-between; gap: 1.2rem; flex-wrap: wrap; color: var(--muted); font-size: 0.85rem; }
+    .foot .fmark { font-family: var(--serif); font-weight: 600; letter-spacing: 0.2em; color: var(--ink); }
+    .foot nav { display: flex; gap: 0.2rem; }
+    .foot a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 0.7rem; text-decoration: none; }
+    .foot a:hover { color: var(--ink); }
 
-    /* reveal (only when JS is running — content stays visible otherwise) */
-    html.js .reveal { opacity: 0; transform: translateY(14px); transition: opacity .6s ease, transform .6s ease; }
+    /* ---- motion ---- */
+    html.js .reveal { opacity: 0; transform: translateY(16px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
     html.js .reveal.in { opacity: 1; transform: none; }
     @media (prefers-reduced-motion: reduce) {
-      .reveal { opacity: 1; transform: none; transition: none; }
-      .grid img { transition: none; }
       html { scroll-behavior: auto; }
+      .marq-track { animation: none; }
+      .tile img, .btn { transition: none; }
+      html.js .reveal { opacity: 1; transform: none; transition: none; }
     }
 
+    @media (max-width: 1020px) {
+      .bento { grid-template-columns: repeat(3, 1fr); grid-auto-rows: 230px; }
+    }
     @media (max-width: 860px) {
       .hero-in, .story-in { grid-template-columns: 1fr; }
-      .hero-img { order: -1; }
-      .facts-in { grid-template-columns: 1fr; }
-      .fact + .fact { border-left: 0; border-top: 1px solid var(--line); }
-      .bar nav { gap: 1rem; }
+      .hero-fig { order: -1; max-width: 520px; }
+      .facts-in { grid-template-columns: 1fr; gap: 1.6rem; }
+      .bento { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 42vw; }
+      .sec-head { flex-direction: column; gap: 0.3rem; }
+    }
+    @media (max-width: 520px) {
+      .bento { grid-template-columns: 1fr; grid-auto-rows: auto; gap: 12px; }
+      .tile, .t-tall, .t-wide { grid-row: auto; grid-column: auto; }
+      .tile img { height: auto; }
+      .cta-row .btn { flex: 1 1 100%; }
     }
   </style>
 </head>
 <body>
   <header class="bar">
     <div class="wrap bar-in">
-      <a class="mark" href="#top">ZAIKA</a>
-      <nav>
-        <a href="https://www.etsy.com/shop/zaikalabel" rel="noopener">Etsy</a>
+      <a class="mark" href="#top">ZAIKA<span class="no">&nbsp;№</span></a>
+      <nav aria-label="Primary">
         <a href="https://www.instagram.com/zaika.label/" rel="noopener">Instagram</a>
+        <a class="pill" href="https://www.etsy.com/shop/zaikalabel" rel="noopener">Shop&nbsp;on&nbsp;Etsy</a>
       </nav>
     </div>
   </header>
@@ -138,30 +179,40 @@
     <div class="wrap hero-in">
       <div>
         <p class="kicker">Zaika Label · hand-crocheted in Poland</p>
-        <h1>Texture you can only get <em>by hand.</em></h1>
+        <h1><span class="line">Texture you can</span><span class="line">only get <em>by hand.</em></span></h1>
         <p class="lede"><strong>One of each, made in Poland.</strong> Zaika is one person — Zlata — crocheting freeform, without a pattern that could ever be run twice. When a piece sells, its listing closes for good.</p>
         <div class="cta-row">
           <a class="btn btn-solid" href="https://www.etsy.com/shop/zaikalabel" rel="noopener">Shop on Etsy</a>
           <a class="btn btn-line" href="https://www.instagram.com/zaika.label/" rel="noopener">Instagram</a>
         </div>
       </div>
-      <div class="hero-img">
+      <figure class="hero-fig">
         <img src="assets/img/checker-hood-portrait.jpg" alt="Checkered green and white crocheted scarf wrapped as a hood, portrait" width="1080" height="1440" fetchpriority="high">
-      </div>
+        <figcaption><span>Checker scarf, worn as a hood</span><span>№ —</span></figcaption>
+      </figure>
     </div>
   </section>
 
-  <section class="facts">
+  <div class="marq" aria-hidden="true">
+    <div class="marq-track">
+      <span>Made once · Never repeated · Crocheted by hand in Poland · No pattern · No restock · </span><span>Made once · Never repeated · Crocheted by hand in Poland · No pattern · No restock · </span>
+    </div>
+  </div>
+
+  <section class="facts" aria-label="How the pieces are made">
     <div class="wrap facts-in">
-      <div class="fact">
+      <div class="fact reveal">
+        <span class="no">№ 01</span>
         <h3>Made once</h3>
         <p>No pattern, no restock. Each piece is a single execution — the next one will be something else.</p>
       </div>
-      <div class="fact">
+      <div class="fact reveal">
+        <span class="no">№ 02</span>
         <h3>Hours in the surface</h3>
         <p>A scarf takes 11–14 hours of handwork; tops run to 16. The loft, pile and fringe are the point.</p>
       </div>
-      <div class="fact">
+      <div class="fact reveal">
+        <span class="no">№ 03</span>
         <h3>One person</h3>
         <p>Every piece is crocheted by Zlata, start to finish — and she answers the messages herself.</p>
       </div>
@@ -171,43 +222,43 @@
   <section class="gallery">
     <div class="wrap">
       <div class="sec-head">
-        <h2>The pieces</h2>
+        <h2><span class="no">№</span>The pieces</h2>
         <span>From the atelier's two latest shoots</span>
       </div>
-      <div class="grid">
-        <figure class="reveal"><img src="assets/img/checker-scarf.jpg" alt="Green and white checkered crocheted scarf worn over a brown leather jacket" width="980" height="1306" decoding="async"></figure>
-        <figure class="reveal"><img src="assets/img/red-pink-scarf-full.jpg" alt="Long red and pink striped crocheted scarf with fringe, worn front-on" width="1400" height="936" decoding="async"></figure>
-        <figure class="reveal"><img src="assets/img/black-mesh-top.jpg" alt="Black open-mesh crocheted crop sweater, back view" width="1400" height="936" loading="lazy" decoding="async"></figure>
-        <figure class="reveal"><img src="assets/img/green-stripe-front.jpg" alt="Green striped open-knit sweater in chartreuse and olive, worn" width="1080" height="1440" loading="lazy" decoding="async"></figure>
-        <figure class="reveal"><img src="assets/img/plaid-scarf.jpg" alt="Red and black plaid crocheted scarf wrapped around the neck" width="1400" height="936" loading="lazy" decoding="async"></figure>
-        <figure class="reveal"><img src="assets/img/cream-mesh-hand.jpg" alt="Cream open-net crochet stretched by hand, texture detail" width="768" height="1024" loading="lazy" decoding="async"></figure>
-        <figure class="reveal"><img src="assets/img/red-fringe-sweater.jpg" alt="Red crocheted crop sweater with chartreuse fringe details" width="1400" height="936" loading="lazy" decoding="async"></figure>
-        <figure class="reveal"><img src="assets/img/green-ribbon-scarf.jpg" alt="Olive green crocheted scarf with woven flower ribbons, detail" width="1400" height="936" loading="lazy" decoding="async"></figure>
-        <figure class="reveal"><img src="assets/img/pastel-fur-scarf.jpg" alt="Pastel faux-fur scarf in mint, lilac, pink and cream, worn as a hood" width="865" height="1153" loading="lazy" decoding="async"></figure>
-        <figure class="reveal"><img src="assets/img/green-black-scarf.jpg" alt="Green and black striped fluffy scarf, back view" width="1400" height="936" loading="lazy" decoding="async"></figure>
-        <figure class="reveal"><img src="assets/img/black-pink-scarf.jpg" alt="Black crocheted scarf with pink stripes, held up" width="1400" height="936" loading="lazy" decoding="async"></figure>
-        <figure class="reveal"><img src="assets/img/green-stripe-crop.jpg" alt="Green striped crocheted crop sweater with bell sleeves" width="988" height="1317" loading="lazy" decoding="async"></figure>
-        <figure class="reveal"><img src="assets/img/fur-scarf.jpg" alt="Black and cream faux-fur scarf draped over the shoulders, back view" width="1400" height="936" loading="lazy" decoding="async"></figure>
-        <figure class="reveal"><img src="assets/img/red-pink-hood.jpg" alt="Red and pink striped scarf worn wrapped over the head" width="1400" height="936" loading="lazy" decoding="async"></figure>
-        <figure class="reveal"><img src="assets/img/chartreuse-sweater.jpg" alt="Chartreuse striped open-knit sweater, hands clasped" width="768" height="1024" loading="lazy" decoding="async"></figure>
-        <figure class="reveal"><img src="assets/img/olive-fringe-scarf.jpg" alt="Olive crocheted scarf with chartreuse fringe, worn over a leather jacket" width="1080" height="1616" loading="lazy" decoding="async"></figure>
-        <figure class="reveal"><img src="assets/img/checker-scarf-drape.jpg" alt="Checkered scarf draped over a leather jacket" width="1080" height="1440" loading="lazy" decoding="async"></figure>
-        <figure class="reveal"><img src="assets/img/green-stripe-back.jpg" alt="Green striped open-knit sweater, back view" width="936" height="1248" loading="lazy" decoding="async"></figure>
-        <figure class="reveal"><img src="assets/img/black-pink-label.jpg" alt="ZAIKA woven label on a black and pink crocheted scarf, close-up" width="1167" height="1750" loading="lazy" decoding="async"></figure>
-        <figure class="reveal"><img src="assets/img/plaid-back.jpg" alt="Red and black plaid scarf over a quilted jacket, back view" width="1400" height="936" loading="lazy" decoding="async"></figure>
-        <figure class="reveal"><img src="assets/img/green-black-held.jpg" alt="Green and black scarf held up by an outstretched arm" width="1400" height="936" loading="lazy" decoding="async"></figure>
-        <figure class="reveal"><img src="assets/img/red-bolero-back.jpg" alt="Red crocheted bolero with textured stripes, back view" width="1400" height="936" loading="lazy" decoding="async"></figure>
-        <figure class="reveal"><img src="assets/img/checker-full-length.jpg" alt="Checkered scarf worn full-length with fringe" width="781" height="1041" loading="lazy" decoding="async"></figure>
-        <figure class="reveal"><img src="assets/img/plaid-white-tee.jpg" alt="Red and black plaid scarf worn over a white t-shirt" width="1400" height="936" loading="lazy" decoding="async"></figure>
+      <div class="bento">
+        <figure class="tile t-tall reveal"><img src="assets/img/checker-scarf.jpg" alt="Green and white checkered crocheted scarf worn over a brown leather jacket" width="980" height="1306" decoding="async"></figure>
+        <figure class="tile t-wide reveal"><img src="assets/img/red-pink-scarf-full.jpg" alt="Long red and pink striped crocheted scarf with fringe, worn front-on" width="1400" height="936" decoding="async"></figure>
+        <figure class="tile  reveal"><img src="assets/img/black-mesh-top.jpg" alt="Black open-mesh crocheted crop sweater, back view" width="1400" height="936" loading="lazy" decoding="async"></figure>
+        <figure class="tile t-tall reveal"><img src="assets/img/green-stripe-front.jpg" alt="Green striped open-knit sweater in chartreuse and olive, worn" width="1080" height="1440" loading="lazy" decoding="async"></figure>
+        <figure class="tile  reveal"><img src="assets/img/plaid-scarf.jpg" alt="Red and black plaid crocheted scarf wrapped around the neck" width="1400" height="936" loading="lazy" decoding="async"></figure>
+        <figure class="tile t-tall reveal"><img src="assets/img/cream-mesh-hand.jpg" alt="Cream open-net crochet stretched by hand, texture detail" width="768" height="1024" loading="lazy" decoding="async"></figure>
+        <figure class="tile t-wide reveal"><img src="assets/img/red-fringe-sweater.jpg" alt="Red crocheted crop sweater with chartreuse fringe details" width="1400" height="936" loading="lazy" decoding="async"></figure>
+        <figure class="tile  reveal"><img src="assets/img/green-ribbon-scarf.jpg" alt="Olive green crocheted scarf with woven flower ribbons, detail" width="1400" height="936" loading="lazy" decoding="async"></figure>
+        <figure class="tile t-tall reveal"><img src="assets/img/pastel-fur-scarf.jpg" alt="Pastel faux-fur scarf in mint, lilac, pink and cream, worn as a hood" width="865" height="1153" loading="lazy" decoding="async"></figure>
+        <figure class="tile  reveal"><img src="assets/img/green-black-scarf.jpg" alt="Green and black striped fluffy scarf, back view" width="1400" height="936" loading="lazy" decoding="async"></figure>
+        <figure class="tile t-wide reveal"><img src="assets/img/black-pink-scarf.jpg" alt="Black crocheted scarf with pink stripes, held up" width="1400" height="936" loading="lazy" decoding="async"></figure>
+        <figure class="tile t-tall reveal"><img src="assets/img/green-stripe-crop.jpg" alt="Green striped crocheted crop sweater with bell sleeves" width="988" height="1317" loading="lazy" decoding="async"></figure>
+        <figure class="tile  reveal"><img src="assets/img/fur-scarf.jpg" alt="Black and cream faux-fur scarf draped over the shoulders, back view" width="1400" height="936" loading="lazy" decoding="async"></figure>
+        <figure class="tile  reveal"><img src="assets/img/red-pink-hood.jpg" alt="Red and pink striped scarf worn wrapped over the head" width="1400" height="936" loading="lazy" decoding="async"></figure>
+        <figure class="tile t-tall reveal"><img src="assets/img/chartreuse-sweater.jpg" alt="Chartreuse striped open-knit sweater, hands clasped" width="768" height="1024" loading="lazy" decoding="async"></figure>
+        <figure class="tile t-tall reveal"><img src="assets/img/olive-fringe-scarf.jpg" alt="Olive crocheted scarf with chartreuse fringe, worn over a leather jacket" width="1080" height="1616" loading="lazy" decoding="async"></figure>
+        <figure class="tile t-tall reveal"><img src="assets/img/checker-scarf-drape.jpg" alt="Checkered scarf draped over a leather jacket" width="1080" height="1440" loading="lazy" decoding="async"></figure>
+        <figure class="tile t-tall reveal"><img src="assets/img/green-stripe-back.jpg" alt="Green striped open-knit sweater, back view" width="936" height="1248" loading="lazy" decoding="async"></figure>
+        <figure class="tile t-tall reveal"><img src="assets/img/black-pink-label.jpg" alt="ZAIKA woven label on a black and pink crocheted scarf, close-up" width="1167" height="1750" loading="lazy" decoding="async"></figure>
+        <figure class="tile t-wide reveal"><img src="assets/img/plaid-back.jpg" alt="Red and black plaid scarf over a quilted jacket, back view" width="1400" height="936" loading="lazy" decoding="async"></figure>
+        <figure class="tile  reveal"><img src="assets/img/green-black-held.jpg" alt="Green and black scarf held up by an outstretched arm" width="1400" height="936" loading="lazy" decoding="async"></figure>
+        <figure class="tile  reveal"><img src="assets/img/red-bolero-back.jpg" alt="Red crocheted bolero with textured stripes, back view" width="1400" height="936" loading="lazy" decoding="async"></figure>
+        <figure class="tile t-tall reveal"><img src="assets/img/checker-full-length.jpg" alt="Checkered scarf worn full-length with fringe" width="781" height="1041" loading="lazy" decoding="async"></figure>
+        <figure class="tile t-wide reveal"><img src="assets/img/plaid-white-tee.jpg" alt="Red and black plaid scarf worn over a white t-shirt" width="1400" height="936" loading="lazy" decoding="async"></figure>
       </div>
     </div>
   </section>
 
   <section class="story">
     <div class="wrap story-in">
-      <div class="story-img">
+      <figure class="story-fig reveal">
         <img src="assets/img/checker-label-detail.jpg" alt="ZAIKA woven label on a green and white checkered crocheted scarf, close-up" width="1313" height="1750" loading="lazy">
-      </div>
+      </figure>
       <div>
         <h2>The label</h2>
         <p><strong>Zaika is Zlata — one maker, no production line.</strong> She works in yarns chosen for one thing: how the finished surface behaves. A halo that moves when you do. A pile deep enough to put your face in. A stitch that holds its own shape instead of lying flat.</p>
@@ -219,7 +270,7 @@
 
   <section class="band">
     <div class="wrap">
-      <h2>The collection lives on Etsy.</h2>
+      <h2>The collection lives <em>on Etsy.</em></h2>
       <p>Every piece that is still available is there. When one sells, it's gone — the next will be something else.</p>
       <div class="cta-row">
         <a class="btn btn-solid" href="https://www.etsy.com/shop/zaikalabel" rel="noopener">Shop on Etsy</a>
@@ -230,12 +281,12 @@
 
   <footer>
     <div class="wrap foot">
-      <span>© 2026 Zaika Label · Hand-crocheted in Poland</span>
-      <nav>
+      <span class="fmark">ZAIKA</span>
+      <nav aria-label="Footer">
         <a href="https://www.etsy.com/shop/zaikalabel" rel="noopener">Etsy</a>
         <a href="https://www.instagram.com/zaika.label/" rel="noopener">Instagram</a>
       </nav>
-      <span>All photographs © Zaika Label</span>
+      <span>© 2026 Zaika Label · Hand-crocheted in Poland · Photographs © Zaika Label</span>
     </div>
   </footer>
 
@@ -247,7 +298,10 @@
       var io = new IntersectionObserver(function (es) {
         es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
       }, { rootMargin: "0px 0px -8% 0px" });
-      document.querySelectorAll(".reveal").forEach(function (el) { io.observe(el); });
+      document.querySelectorAll(".reveal").forEach(function (el, i) {
+        el.style.transitionDelay = Math.min(i % 4 * 60, 180) + "ms";
+        io.observe(el);
+      });
     })();
   </script>
 </body>
