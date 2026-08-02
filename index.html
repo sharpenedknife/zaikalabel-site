@@ -11,6 +11,7 @@
   <meta property="og:description" content="Zaika is one maker — Zlata — hand-crocheting in Poland. Every piece is made once and never repeated; when it sells, the listing closes. The collection lives on Etsy.">
   <meta property="og:url" content="https://zaikalabel.com/">
   <meta property="og:image" content="https://zaikalabel.com/assets/og.jpg">
+  <meta property="og:image:alt" content="A green and white checkered hand-crocheted scarf worn over a leather jacket">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="theme-color" content="#f4f1ea">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%231b1713'/%3E%3Ctext x='32' y='46' font-family='Georgia,serif' font-style='italic' font-size='42' fill='%23f4f1ea' text-anchor='middle'%3EZ%3C/text%3E%3C/svg%3E">
@@ -24,6 +25,7 @@
     "name": "Zaika Label",
     "alternateName": "ZAIKA",
     "url": "https://zaikalabel.com/",
+    "description": "One-of-a-kind hand-crocheted knitwear made in Poland by a single maker.",
     "sameAs": ["https://www.etsy.com/shop/zaikalabel", "https://www.instagram.com/zaika.label/"]
   }
   </script>
@@ -35,7 +37,7 @@
       --ease: cubic-bezier(0.22, 1, 0.36, 1);
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
     body { background: var(--paper); color: var(--ink); font-family: var(--sans); font-size: 16px; line-height: 1.65; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
     body::after { content: ""; position: fixed; inset: 0; z-index: 999; pointer-events: none; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E"); opacity: 0.045; transform: translateZ(0); }
     ::selection { background: var(--moss); color: var(--paper); }
@@ -43,6 +45,9 @@
     img { display: block; max-width: 100%; height: auto; }
     :focus-visible { outline: 2px solid var(--moss); outline-offset: 3px; }
     .wrap { max-width: 1320px; margin: 0 auto; padding: 0 clamp(1.1rem, 4vw, 2.75rem); }
+    .vh { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+    .skip { position: absolute; left: 1rem; top: -4rem; z-index: 40; padding: 0.8rem 1.4rem; background: var(--ink); color: var(--paper); font-size: 0.82rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; border-radius: 999px; transition: top .2s var(--ease); }
+    .skip:focus { top: 1rem; }
 
     .bar { position: sticky; top: 0; z-index: 20; background: color-mix(in srgb, var(--paper) 90%, transparent); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
     .bar-in { display: flex; align-items: center; justify-content: space-between; height: 3.9rem; gap: 0.5rem; }
@@ -59,12 +64,13 @@
     .hero-in { display: grid; grid-template-columns: 7fr 5fr; gap: clamp(2rem, 5vw, 5rem); align-items: center; }
     .kicker { display: flex; align-items: center; gap: 0.8rem; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; color: var(--moss); margin-bottom: clamp(1.2rem, 2.5vw, 2rem); }
     .kicker::before { content: ""; width: 2.4rem; height: 1px; background: var(--moss); flex: none; }
-    h1 { font-family: var(--serif); font-weight: 560; font-size: clamp(2.7rem, 6.2vw, 5.4rem); line-height: 1.02; letter-spacing: -0.02em; text-wrap: balance; }
+    h1 { font-family: var(--serif); font-weight: 560; font-size: clamp(2.6rem, 6.2vw, 5.4rem); line-height: 1.02; letter-spacing: -0.02em; text-wrap: balance; }
     h1 .line { display: block; }
     h1 em, h2 em { font-style: italic; font-weight: 460; }
     h1 em { color: var(--moss); }
     .lede { margin-top: 1.7rem; font-size: clamp(1.02rem, 1.5vw, 1.16rem); color: var(--muted); max-width: 33em; }
     .lede strong { color: var(--ink); font-weight: 600; }
+    .lede a { color: var(--moss); text-underline-offset: 3px; }
     .cta-row { margin-top: 2.4rem; display: flex; gap: 0.9rem; flex-wrap: wrap; }
     .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0.85rem 2rem; font-family: var(--sans); font-size: 0.85rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; text-decoration: none; border: 1px solid var(--ink); border-radius: 999px; transition: background .18s var(--ease), color .18s var(--ease), transform .18s var(--ease); }
     .btn:active { transform: scale(0.98); }
@@ -94,17 +100,19 @@
     h2 .no { font-style: italic; font-weight: 460; color: var(--moss); font-size: 0.6em; vertical-align: 0.35em; margin-right: 0.35em; }
     .sec-head span { font-size: 0.8rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); }
     .bento { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 250px; grid-auto-flow: dense; gap: 14px; }
-    .tile { display: block; overflow: hidden; border-radius: 4px; background: var(--paper-deep); }
-    a.tile { cursor: zoom-in; }
+    .tile { position: relative; display: block; overflow: hidden; border-radius: 4px; background: var(--paper-deep); }
+    .tile.zoom { cursor: zoom-in; }
+    .tile:focus-visible { outline: 2px solid var(--moss); outline-offset: -4px; }
+    .tile picture { display: block; width: 100%; height: 100%; }
     .tile img { width: 100%; height: 100%; object-fit: cover; transition: transform .7s var(--ease); }
     .tile:hover img { transform: scale(1.035); }
-    .t-tall { grid-row: span 2; }
-    .t-wide { grid-column: span 2; }
+    .cap { position: absolute; left: 0; right: 0; bottom: 0; padding: 2.4rem 0.95rem 0.85rem; font-size: 0.78rem; line-height: 1.35; color: var(--paper); background: linear-gradient(to top, rgba(27,23,19,0.78), rgba(27,23,19,0)); opacity: 0; transform: translateY(6px); transition: opacity .3s var(--ease), transform .3s var(--ease); pointer-events: none; }
+    .tile:hover .cap, .tile:focus-visible .cap { opacity: 1; transform: none; }
     .gallery-more { display: flex; justify-content: center; padding: 2.2rem 0 0.5rem; }
 
     .page-head { padding: clamp(3rem, 6vw, 5rem) 0 0; }
     .page-head .kicker { margin-bottom: 1rem; }
-    .page-head h1 { font-size: clamp(2.4rem, 5vw, 4.2rem); }
+    .page-head h1 { font-size: clamp(2.3rem, 5vw, 4.2rem); }
     .page-head .lede { margin-top: 1.2rem; }
 
     .story { padding: clamp(4rem, 8vw, 7rem) 0; }
@@ -115,21 +123,26 @@
     .story h2 { margin-bottom: 1.5rem; }
     .story p { color: var(--muted); max-width: 36em; margin-bottom: 1.05em; }
     .story p strong { color: var(--ink); font-weight: 600; }
-    .pull { font-family: var(--serif); font-style: italic; font-weight: 480; font-size: clamp(1.25rem, 2.2vw, 1.7rem); color: var(--ink); line-height: 1.35; margin-top: 1.8rem; padding-left: 1.4rem; border-left: 2px solid var(--moss); }
+    .pull { font-family: var(--serif); font-style: italic; font-weight: 480; font-size: clamp(1.2rem, 2.2vw, 1.7rem); color: var(--ink); line-height: 1.35; margin-top: 1.8rem; padding-left: 1.4rem; border-left: 2px solid var(--moss); }
     .story .more { display: inline-flex; align-items: center; min-height: 44px; margin-top: 1.6rem; font-weight: 700; font-size: 0.85rem; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none; color: var(--moss); }
     .story .more:hover { color: var(--ink); }
 
     .band { position: relative; background: var(--ink); color: var(--paper); text-align: center; padding: clamp(4.5rem, 9vw, 7.5rem) 0; overflow: hidden; }
     .band::before { content: "ZAIKA"; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); font-family: var(--serif); font-style: italic; font-weight: 600; font-size: clamp(7rem, 18vw, 15rem); letter-spacing: 0.04em; color: rgba(244, 241, 234, 0.05); pointer-events: none; }
     .band > .wrap { position: relative; }
-    .band h2 { font-size: clamp(2rem, 4vw, 3.4rem); max-width: 16em; margin: 0 auto; text-wrap: balance; }
-    .band p { color: rgba(244, 241, 234, 0.62); margin: 1.2rem auto 0; max-width: 32em; }
+    .band h2 { font-size: clamp(1.9rem, 4vw, 3.4rem); max-width: 16em; margin: 0 auto; text-wrap: balance; }
+    .band p { color: rgba(244, 241, 234, 0.66); margin: 1.2rem auto 0; max-width: 32em; }
     .band .cta-row { justify-content: center; }
     .band .btn { border-color: var(--paper); }
     .band .btn-solid { background: var(--paper); color: var(--ink); }
     .band .btn-solid:hover { background: transparent; color: var(--paper); }
     .band .btn-line { color: var(--paper); }
     .band .btn-line:hover { background: var(--paper); color: var(--ink); }
+
+    .nf { text-align: center; padding: clamp(5rem, 14vw, 9rem) 0; }
+    .nf h1 { margin-bottom: 1.2rem; }
+    .nf p { color: var(--muted); max-width: 30em; margin: 0 auto; }
+    .nf .cta-row { justify-content: center; }
 
     footer { padding: 2.8rem 0 3.2rem; }
     .foot { display: flex; align-items: center; justify-content: space-between; gap: 1.2rem; flex-wrap: wrap; color: var(--muted); font-size: 0.85rem; }
@@ -141,35 +154,38 @@
     body.lb-open { overflow: hidden; }
     dialog.lb { border: 0; padding: 0; margin: 0; background: transparent; width: 100vw; max-width: 100vw; height: 100dvh; max-height: 100dvh; }
     dialog.lb[open] { display: flex; align-items: center; justify-content: center; }
-    dialog.lb::backdrop { background: rgba(27, 23, 19, 0.92); }
+    dialog.lb::backdrop { background: rgba(27, 23, 19, 0.94); }
     .lb-fig { position: relative; margin: 0; display: flex; flex-direction: column; align-items: center; max-width: min(94vw, 1200px); }
-    .lb-fig img { max-width: min(94vw, 1200px); max-height: 84dvh; width: auto; height: auto; border-radius: 4px; }
-    .lb-cap { text-align: center; color: var(--paper); font-size: 0.85rem; letter-spacing: 0.06em; padding: 0.9rem 1.5rem 0; opacity: 0.75; }
+    .lb-fig img { max-width: min(94vw, 1200px); max-height: 82dvh; width: auto; height: auto; border-radius: 4px; background: #2a2420; }
+    .lb-meta { display: flex; align-items: baseline; gap: 1rem; justify-content: center; flex-wrap: wrap; padding: 0.95rem 1.5rem 0; }
+    .lb-cap { color: var(--paper); font-size: 0.85rem; letter-spacing: 0.04em; opacity: 0.78; }
+    .lb-count { font-family: var(--serif); font-style: italic; font-size: 0.85rem; color: var(--paper); opacity: 0.55; white-space: nowrap; }
     .lb-btn { position: fixed; z-index: 2; display: inline-flex; align-items: center; justify-content: center; width: 48px; height: 48px; border: 1px solid rgba(244,241,234,0.4); border-radius: 999px; background: rgba(27,23,19,0.55); color: var(--paper); font-family: var(--sans); font-size: 1.3rem; line-height: 1; cursor: pointer; transition: background .15s; }
     .lb-btn:hover { background: rgba(244,241,234,0.15); }
     .lb-x { top: 16px; right: 16px; }
     .lb-prev { left: 16px; top: 50%; transform: translateY(-50%); }
     .lb-next { right: 16px; top: 50%; transform: translateY(-50%); }
-    @media (max-width: 560px) {
-      .lb-prev { left: 12px; top: auto; bottom: 20px; transform: none; }
-      .lb-next { right: 12px; top: auto; bottom: 20px; transform: none; }
-      .lb-cap { padding-bottom: 4.5rem; }
-    }
 
     html.js .reveal { opacity: 0; transform: translateY(16px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
     html.js .reveal.in { opacity: 1; transform: none; }
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       .marq-track { animation: none; }
-      .tile img, .btn { transition: none; }
+      .tile img, .btn, .cap { transition: none; }
       html.js .reveal { opacity: 1; transform: none; transition: none; }
+    }
+    @media (hover: none) {
+      /* No hover on touch: captions would never appear, and a stuck scale
+         after tap looks broken. */
+      .cap { display: none; }
+      .tile:hover img { transform: none; }
     }
     @media (max-width: 1020px) {
       .bento { grid-template-columns: repeat(3, 1fr); grid-auto-rows: 230px; }
     }
     @media (max-width: 860px) {
       .hero-in, .story-in { grid-template-columns: 1fr; }
-      .hero-fig { order: -1; max-width: 520px; }
+      .hero-fig { max-width: 560px; }
       .facts-in { grid-template-columns: 1fr; gap: 1.6rem; }
       .bento { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 42vw; }
       .sec-head { flex-direction: column; gap: 0.3rem; }
@@ -182,6 +198,9 @@
       .bar nav a { padding: 0 0.55rem; font-size: 0.75rem; letter-spacing: 0.08em; }
       .bar nav a.pill { margin-left: 0.25rem; }
       .wrap { padding: 0 1rem; }
+      .lb-prev { left: 12px; top: auto; bottom: 20px; transform: none; }
+      .lb-next { right: 12px; top: auto; bottom: 20px; transform: none; }
+      .lb-meta { padding-bottom: 4.5rem; }
     }
     @media (max-width: 560px) {
       .bento { grid-template-columns: 1fr; grid-auto-rows: auto; gap: 12px; }
@@ -192,9 +211,10 @@
 </style>
 </head>
 <body>
+  <a class="skip" href="#main">Skip to content</a>
   <header class="bar">
     <div class="wrap bar-in">
-      <a class="mark" href="./">ZAIKA<span class="no">&nbsp;№</span></a>
+      <a class="mark" href="./" aria-label="ZAIKA — home">ZAIKA<span class="no">&nbsp;№</span></a>
       <nav aria-label="Primary">
         <a href="pieces/"><span class="lg">The&nbsp;</span>Pieces</a>
         <a href="the-label/"><span class="lg">The&nbsp;</span>Label</a>
@@ -204,6 +224,7 @@
     </div>
   </header>
 
+  <main id="main">
   <section class="hero" id="top">
     <div class="wrap hero-in">
       <div>
@@ -228,7 +249,8 @@
     </div>
   </div>
 
-  <section class="facts" aria-label="How the pieces are made">
+  <section class="facts" aria-labelledby="facts-h">
+    <h2 id="facts-h" class="vh">How the pieces are made</h2>
     <div class="wrap facts-in">
       <div class="fact reveal">
         <span class="no">№ 01</span>
@@ -248,25 +270,97 @@
     </div>
   </section>
 
-  <section class="gallery">
+  <section class="gallery" aria-labelledby="pieces-h">
     <div class="wrap">
       <div class="sec-head">
-        <h2><span class="no">№</span>The pieces</h2>
+        <h2 id="pieces-h"><span class="no">№</span>The pieces</h2>
         <span>From the atelier's two latest shoots</span>
       </div>
       <div class="bento">
-        <figure class="tile t-tall reveal"><img src="assets/img/checker-scarf@640.jpg" srcset="assets/img/checker-scarf@640.jpg 640w, assets/img/checker-scarf.jpg 980w" sizes="(max-width: 520px) 100vw, (max-width: 1020px) 33vw, 330px" alt="Green and white checkered crocheted scarf worn over a brown leather jacket" width="980" height="1306" decoding="async"></figure>
-        <figure class="tile t-wide reveal"><img src="assets/img/red-pink-scarf-full@640.jpg" srcset="assets/img/red-pink-scarf-full@640.jpg 640w, assets/img/red-pink-scarf-full.jpg 1400w" sizes="(max-width: 520px) 100vw, (max-width: 1020px) 66vw, 640px" alt="Long red and pink striped crocheted scarf with fringe, worn front-on" width="1400" height="936" decoding="async"></figure>
-        <figure class="tile reveal"><img src="assets/img/black-mesh-top@640.jpg" srcset="assets/img/black-mesh-top@640.jpg 640w, assets/img/black-mesh-top.jpg 1400w" sizes="(max-width: 520px) 100vw, (max-width: 1020px) 33vw, 330px" alt="Black open-mesh crocheted crop sweater, back view" width="1400" height="936" loading="lazy" decoding="async"></figure>
-        <figure class="tile t-tall reveal"><img src="assets/img/green-stripe-front@640.jpg" srcset="assets/img/green-stripe-front@640.jpg 640w, assets/img/green-stripe-front.jpg 1080w" sizes="(max-width: 520px) 100vw, (max-width: 1020px) 33vw, 330px" alt="Green striped open-knit sweater in chartreuse and olive, worn" width="1080" height="1440" loading="lazy" decoding="async"></figure>
-        <figure class="tile reveal"><img src="assets/img/plaid-scarf@640.jpg" srcset="assets/img/plaid-scarf@640.jpg 640w, assets/img/plaid-scarf.jpg 1400w" sizes="(max-width: 520px) 100vw, (max-width: 1020px) 33vw, 330px" alt="Red and black plaid crocheted scarf wrapped around the neck" width="1400" height="936" loading="lazy" decoding="async"></figure>
-        <figure class="tile t-tall reveal"><img src="assets/img/cream-mesh-hand@640.jpg" srcset="assets/img/cream-mesh-hand@640.jpg 640w, assets/img/cream-mesh-hand.jpg 768w" sizes="(max-width: 520px) 100vw, (max-width: 1020px) 33vw, 330px" alt="Cream open-net crochet stretched by hand, texture detail" width="768" height="1024" loading="lazy" decoding="async"></figure>
-        <figure class="tile t-wide reveal"><img src="assets/img/red-fringe-sweater@640.jpg" srcset="assets/img/red-fringe-sweater@640.jpg 640w, assets/img/red-fringe-sweater.jpg 1400w" sizes="(max-width: 520px) 100vw, (max-width: 1020px) 66vw, 640px" alt="Red crocheted crop sweater with chartreuse fringe details" width="1400" height="936" loading="lazy" decoding="async"></figure>
-        <figure class="tile t-tall reveal"><img src="assets/img/pastel-fur-scarf@640.jpg" srcset="assets/img/pastel-fur-scarf@640.jpg 640w, assets/img/pastel-fur-scarf.jpg 865w" sizes="(max-width: 520px) 100vw, (max-width: 1020px) 33vw, 330px" alt="Pastel faux-fur scarf in mint, lilac, pink and cream, worn as a hood" width="865" height="1153" loading="lazy" decoding="async"></figure>
-        <figure class="tile reveal"><img src="assets/img/green-black-scarf@640.jpg" srcset="assets/img/green-black-scarf@640.jpg 640w, assets/img/green-black-scarf.jpg 1400w" sizes="(max-width: 520px) 100vw, (max-width: 1020px) 33vw, 330px" alt="Green and black striped fluffy scarf, back view" width="1400" height="936" loading="lazy" decoding="async"></figure>
-        <figure class="tile reveal"><img src="assets/img/fur-scarf@640.jpg" srcset="assets/img/fur-scarf@640.jpg 640w, assets/img/fur-scarf.jpg 1400w" sizes="(max-width: 520px) 100vw, (max-width: 1020px) 33vw, 330px" alt="Black and cream faux-fur scarf draped over the shoulders, back view" width="1400" height="936" loading="lazy" decoding="async"></figure>
-        <figure class="tile t-tall reveal"><img src="assets/img/chartreuse-sweater@640.jpg" srcset="assets/img/chartreuse-sweater@640.jpg 640w, assets/img/chartreuse-sweater.jpg 768w" sizes="(max-width: 520px) 100vw, (max-width: 1020px) 33vw, 330px" alt="Chartreuse striped open-knit sweater, hands clasped" width="768" height="1024" loading="lazy" decoding="async"></figure>
-        <figure class="tile t-tall reveal"><img src="assets/img/black-pink-label@640.jpg" srcset="assets/img/black-pink-label@640.jpg 640w, assets/img/black-pink-label.jpg 1167w" sizes="(max-width: 520px) 100vw, (max-width: 1020px) 33vw, 330px" alt="ZAIKA woven label on a black and pink crocheted scarf, close-up" width="1167" height="1750" loading="lazy" decoding="async"></figure>
+        <a class="tile t-tall reveal" href="pieces/" aria-label="Green and white checkered crocheted scarf worn over a brown leather jacket — see all pieces">
+          <picture>
+            <source type="image/webp" srcset="assets/img/checker-scarf@640.webp 640w, assets/img/checker-scarf.webp 980w" sizes="(max-width: 560px) 100vw, (max-width: 1020px) 33vw, 330px">
+            <img src="assets/img/checker-scarf@640.jpg" srcset="assets/img/checker-scarf@640.jpg 640w, assets/img/checker-scarf.jpg 980w" sizes="(max-width: 560px) 100vw, (max-width: 1020px) 33vw, 330px" alt="Green and white checkered crocheted scarf worn over a brown leather jacket" width="980" height="1306" decoding="async">
+          </picture>
+          <span class="cap" aria-hidden="true">Green and white checkered crocheted scarf worn over a brown leather jacket</span>
+        </a>
+        <a class="tile t-wide reveal" href="pieces/" aria-label="Long red and pink striped crocheted scarf with fringe, worn front-on — see all pieces">
+          <picture>
+            <source type="image/webp" srcset="assets/img/red-pink-scarf-full@640.webp 640w, assets/img/red-pink-scarf-full.webp 1400w" sizes="(max-width: 560px) 100vw, (max-width: 1020px) 66vw, 640px">
+            <img src="assets/img/red-pink-scarf-full@640.jpg" srcset="assets/img/red-pink-scarf-full@640.jpg 640w, assets/img/red-pink-scarf-full.jpg 1400w" sizes="(max-width: 560px) 100vw, (max-width: 1020px) 66vw, 640px" alt="Long red and pink striped crocheted scarf with fringe, worn front-on" width="1400" height="936" decoding="async">
+          </picture>
+          <span class="cap" aria-hidden="true">Long red and pink striped crocheted scarf with fringe, worn front-on</span>
+        </a>
+        <a class="tile reveal" href="pieces/" aria-label="Black open-mesh crocheted crop sweater, back view — see all pieces">
+          <picture>
+            <source type="image/webp" srcset="assets/img/black-mesh-top@640.webp 640w, assets/img/black-mesh-top.webp 1400w" sizes="(max-width: 560px) 100vw, (max-width: 1020px) 33vw, 330px">
+            <img src="assets/img/black-mesh-top@640.jpg" srcset="assets/img/black-mesh-top@640.jpg 640w, assets/img/black-mesh-top.jpg 1400w" sizes="(max-width: 560px) 100vw, (max-width: 1020px) 33vw, 330px" alt="Black open-mesh crocheted crop sweater, back view" width="1400" height="936" loading="lazy" decoding="async">
+          </picture>
+          <span class="cap" aria-hidden="true">Black open-mesh crocheted crop sweater, back view</span>
+        </a>
+        <a class="tile t-tall reveal" href="pieces/" aria-label="Green striped open-knit sweater in chartreuse and olive, worn — see all pieces">
+          <picture>
+            <source type="image/webp" srcset="assets/img/green-stripe-front@640.webp 640w, assets/img/green-stripe-front.webp 1080w" sizes="(max-width: 560px) 100vw, (max-width: 1020px) 33vw, 330px">
+            <img src="assets/img/green-stripe-front@640.jpg" srcset="assets/img/green-stripe-front@640.jpg 640w, assets/img/green-stripe-front.jpg 1080w" sizes="(max-width: 560px) 100vw, (max-width: 1020px) 33vw, 330px" alt="Green striped open-knit sweater in chartreuse and olive, worn" width="1080" height="1440" loading="lazy" decoding="async">
+          </picture>
+          <span class="cap" aria-hidden="true">Green striped open-knit sweater in chartreuse and olive, worn</span>
+        </a>
+        <a class="tile reveal" href="pieces/" aria-label="Red and black plaid crocheted scarf wrapped around the neck — see all pieces">
+          <picture>
+            <source type="image/webp" srcset="assets/img/plaid-scarf@640.webp 640w, assets/img/plaid-scarf.webp 1400w" sizes="(max-width: 560px) 100vw, (max-width: 1020px) 33vw, 330px">
+            <img src="assets/img/plaid-scarf@640.jpg" srcset="assets/img/plaid-scarf@640.jpg 640w, assets/img/plaid-scarf.jpg 1400w" sizes="(max-width: 560px) 100vw, (max-width: 1020px) 33vw, 330px" alt="Red and black plaid crocheted scarf wrapped around the neck" width="1400" height="936" loading="lazy" decoding="async">
+          </picture>
+          <span class="cap" aria-hidden="true">Red and black plaid crocheted scarf wrapped around the neck</span>
+        </a>
+        <a class="tile t-tall reveal" href="pieces/" aria-label="Cream open-net crochet stretched by hand, texture detail — see all pieces">
+          <picture>
+            <source type="image/webp" srcset="assets/img/cream-mesh-hand@640.webp 640w, assets/img/cream-mesh-hand.webp 768w" sizes="(max-width: 560px) 100vw, (max-width: 1020px) 33vw, 330px">
+            <img src="assets/img/cream-mesh-hand@640.jpg" srcset="assets/img/cream-mesh-hand@640.jpg 640w, assets/img/cream-mesh-hand.jpg 768w" sizes="(max-width: 560px) 100vw, (max-width: 1020px) 33vw, 330px" alt="Cream open-net crochet stretched by hand, texture detail" width="768" height="1024" loading="lazy" decoding="async">
+          </picture>
+          <span class="cap" aria-hidden="true">Cream open-net crochet stretched by hand, texture detail</span>
+        </a>
+        <a class="tile t-wide reveal" href="pieces/" aria-label="Red crocheted crop sweater with chartreuse fringe details — see all pieces">
+          <picture>
+            <source type="image/webp" srcset="assets/img/red-fringe-sweater@640.webp 640w, assets/img/red-fringe-sweater.webp 1400w" sizes="(max-width: 560px) 100vw, (max-width: 1020px) 66vw, 640px">
+            <img src="assets/img/red-fringe-sweater@640.jpg" srcset="assets/img/red-fringe-sweater@640.jpg 640w, assets/img/red-fringe-sweater.jpg 1400w" sizes="(max-width: 560px) 100vw, (max-width: 1020px) 66vw, 640px" alt="Red crocheted crop sweater with chartreuse fringe details" width="1400" height="936" loading="lazy" decoding="async">
+          </picture>
+          <span class="cap" aria-hidden="true">Red crocheted crop sweater with chartreuse fringe details</span>
+        </a>
+        <a class="tile t-tall reveal" href="pieces/" aria-label="Pastel faux-fur scarf in mint, lilac, pink and cream, worn as a hood — see all pieces">
+          <picture>
+            <source type="image/webp" srcset="assets/img/pastel-fur-scarf@640.webp 640w, assets/img/pastel-fur-scarf.webp 865w" sizes="(max-width: 560px) 100vw, (max-width: 1020px) 33vw, 330px">
+            <img src="assets/img/pastel-fur-scarf@640.jpg" srcset="assets/img/pastel-fur-scarf@640.jpg 640w, assets/img/pastel-fur-scarf.jpg 865w" sizes="(max-width: 560px) 100vw, (max-width: 1020px) 33vw, 330px" alt="Pastel faux-fur scarf in mint, lilac, pink and cream, worn as a hood" width="865" height="1153" loading="lazy" decoding="async">
+          </picture>
+          <span class="cap" aria-hidden="true">Pastel faux-fur scarf in mint, lilac, pink and cream, worn as a hood</span>
+        </a>
+        <a class="tile reveal" href="pieces/" aria-label="Green and black striped fluffy scarf, back view — see all pieces">
+          <picture>
+            <source type="image/webp" srcset="assets/img/green-black-scarf@640.webp 640w, assets/img/green-black-scarf.webp 1400w" sizes="(max-width: 560px) 100vw, (max-width: 1020px) 33vw, 330px">
+            <img src="assets/img/green-black-scarf@640.jpg" srcset="assets/img/green-black-scarf@640.jpg 640w, assets/img/green-black-scarf.jpg 1400w" sizes="(max-width: 560px) 100vw, (max-width: 1020px) 33vw, 330px" alt="Green and black striped fluffy scarf, back view" width="1400" height="936" loading="lazy" decoding="async">
+          </picture>
+          <span class="cap" aria-hidden="true">Green and black striped fluffy scarf, back view</span>
+        </a>
+        <a class="tile reveal" href="pieces/" aria-label="Black and cream faux-fur scarf draped over the shoulders, back view — see all pieces">
+          <picture>
+            <source type="image/webp" srcset="assets/img/fur-scarf@640.webp 640w, assets/img/fur-scarf.webp 1400w" sizes="(max-width: 560px) 100vw, (max-width: 1020px) 33vw, 330px">
+            <img src="assets/img/fur-scarf@640.jpg" srcset="assets/img/fur-scarf@640.jpg 640w, assets/img/fur-scarf.jpg 1400w" sizes="(max-width: 560px) 100vw, (max-width: 1020px) 33vw, 330px" alt="Black and cream faux-fur scarf draped over the shoulders, back view" width="1400" height="936" loading="lazy" decoding="async">
+          </picture>
+          <span class="cap" aria-hidden="true">Black and cream faux-fur scarf draped over the shoulders, back view</span>
+        </a>
+        <a class="tile t-tall reveal" href="pieces/" aria-label="Chartreuse striped open-knit sweater, hands clasped — see all pieces">
+          <picture>
+            <source type="image/webp" srcset="assets/img/chartreuse-sweater@640.webp 640w, assets/img/chartreuse-sweater.webp 768w" sizes="(max-width: 560px) 100vw, (max-width: 1020px) 33vw, 330px">
+            <img src="assets/img/chartreuse-sweater@640.jpg" srcset="assets/img/chartreuse-sweater@640.jpg 640w, assets/img/chartreuse-sweater.jpg 768w" sizes="(max-width: 560px) 100vw, (max-width: 1020px) 33vw, 330px" alt="Chartreuse striped open-knit sweater, hands clasped" width="768" height="1024" loading="lazy" decoding="async">
+          </picture>
+          <span class="cap" aria-hidden="true">Chartreuse striped open-knit sweater, hands clasped</span>
+        </a>
+        <a class="tile t-tall reveal" href="pieces/" aria-label="ZAIKA woven label on a black and pink crocheted scarf, close-up — see all pieces">
+          <picture>
+            <source type="image/webp" srcset="assets/img/black-pink-label@640.webp 640w, assets/img/black-pink-label.webp 1167w" sizes="(max-width: 560px) 100vw, (max-width: 1020px) 33vw, 330px">
+            <img src="assets/img/black-pink-label@640.jpg" srcset="assets/img/black-pink-label@640.jpg 640w, assets/img/black-pink-label.jpg 1167w" sizes="(max-width: 560px) 100vw, (max-width: 1020px) 33vw, 330px" alt="ZAIKA woven label on a black and pink crocheted scarf, close-up" width="1167" height="1750" loading="lazy" decoding="async">
+          </picture>
+          <span class="cap" aria-hidden="true">ZAIKA woven label on a black and pink crocheted scarf, close-up</span>
+        </a>
       </div>
       <div class="gallery-more">
         <a class="btn btn-line" href="pieces/">All 36 photographs</a>
@@ -274,13 +368,13 @@
     </div>
   </section>
 
-  <section class="story">
+  <section class="story" aria-labelledby="label-h">
     <div class="wrap story-in">
       <figure class="story-fig reveal">
         <img src="assets/img/checker-label-detail.jpg" alt="ZAIKA woven label on a green and white checkered crocheted scarf, close-up" width="1313" height="1750" loading="lazy">
       </figure>
       <div>
-        <h2>The label</h2>
+        <h2 id="label-h">The label</h2>
         <p><strong>Zaika is Zlata — one maker, no production line.</strong> She works in yarns chosen for one thing: how the finished surface behaves. A halo that moves when you do. A pile deep enough to put your face in. A stitch that holds its own shape instead of lying flat.</p>
         <p>Nothing repeats. There is no pattern to run again, so when a piece finds its person, that listing closes for good. If it's still on Etsy, it's available. If it's gone, the next piece will be something else.</p>
         <p class="pull">She makes these because making them is what she wants to do with her life. That part isn't a strategy.</p>
@@ -299,6 +393,7 @@
       </div>
     </div>
   </section>
+  </main>
 
   <footer>
     <div class="wrap foot">
